@@ -1,0 +1,1 @@
+Download the whole document. And run the template.html file in the browser by opening it.
