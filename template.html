@@ -1,0 +1,235 @@
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="ui/style.css" />
+		<script>
+			async function update() {
+				insertInput('recipe-name');
+				insertInput('recipe-cls');
+				insertInput('recipe-prep');
+				insertInput('recipe-cook');
+				insertInput('recipe-desc');
+				var img = await getSrc('recipe-img');
+				if (img != null) {
+					document.getElementsByClassName('recipe-img')[0].src = img;
+				}
+				
+				for (var i = 0; i < 16; i++) {
+					var n = document.getElementById('recipe-ingredient-' + i).value;
+					var img = await getSrc('recipe-img-' + i);
+					var qty = document.getElementById('recipe-qty-' + i).value;
+					
+					var ingredientHtml = '';
+					if (n != '') { ingredientHtml += '<h3>' + n + '</h3>'; }
+					if (img != null) { ingredientHtml += '<img class="item" src="' + img + '" />'; }
+					if (qty != '') { ingredientHtml += '<p><span>x </span>' + qty + '</p>'; }
+					document.getElementsByClassName('recipe-ingredient-' + i)[0].innerHTML = ingredientHtml;
+				}
+			}
+			
+			function insertInput(id) {
+				var v = document.getElementById(id).value;
+				if (v.length == 0) { return; }
+				var elements = document.getElementsByClassName(id);
+				for (var i = 0; i < elements.length; i++) {
+					elements[i].innerHTML = v;
+				}
+			}
+			
+			async function getSrc(id) {
+				var imgEl = document.getElementById(id);
+				for (var i = 0; i < imgEl.files.length; i++) {
+					return await readFile(imgEl.files[i]);
+				}
+				
+				return null;
+			}
+			
+			async function readFile(file) {
+				return new Promise(function (resolve, reject) {
+					var reader = new FileReader();
+
+					reader.onload = function (res) {
+						resolve(res.target.result);
+					};
+
+					reader.readAsDataURL(file);
+				});
+			}
+		</script>
+	</head>
+	<body>
+		<form>
+			<h1>Recipe</h1>
+			<div><label>Name</label><input type="text" id="recipe-name" onkeyup="update()" /></div>
+			<div><label>Cls</label><input type="text" id="recipe-cls" onkeyup="update()"/></div>
+			<div><label>Img</label><input type="file" id="recipe-img" onchange="update()"/></div>
+			<div><label>Prep</label><input type="text" id="recipe-prep" onkeyup="update()"/></div>
+			<div><label>Cook</label><input type="text" id="recipe-cook" onkeyup="update()"/></div>
+			<div><label>Desc</label><textarea id="recipe-desc" onkeyup="update()"></textarea></div>
+			<h1>Ingredients</h1>
+			<table>
+				<tr>
+					<td>
+						<div><label>Item</label><input list="ingredients-config" id="recipe-ingredient-0" onkeyup="update()"/></div>
+						<div><label>Item</label><input type="file" id="recipe-img-0" onchange="update()"/></div>
+						<div><label>Qty</label><input type="text" id="recipe-qty-0" onkeyup="update()"/></div>
+					</td>
+					<td>
+						<div><label>Item</label><input list="ingredients-config" id="recipe-ingredient-1" onkeyup="update()"/></div>
+						<div><label>Item</label><input type="file" id="recipe-img-1" onchange="update()"/></div>
+						<div><label>Qty</label><input type="text" id="recipe-qty-1" onkeyup="update()"/></div>
+					</td>
+					<td>
+						<div><label>Item</label><input list="ingredients-config" id="recipe-ingredient-2" onkeyup="update()"/></div>
+						<div><label>Item</label><input type="file" id="recipe-img-2" onchange="update()"/></div>
+						<div><label>Qty</label><input type="text" id="recipe-qty-2" onkeyup="update()"/></div>
+					</td>
+					<td>
+						<div><label>Item</label><input list="ingredients-config" id="recipe-ingredient-3" onkeyup="update()"/></div>
+						<div><label>Item</label><input type="file" id="recipe-img-3" onchange="update()"/></div>
+						<div><label>Qty</label><input type="text" id="recipe-qty-3" onkeyup="update()"/></div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<div><label>Item</label><input list="ingredients-config" id="recipe-ingredient-4" onkeyup="update()"/></div>
+						<div><label>Item</label><input type="file" id="recipe-img-4" onchange="update()"/></div>
+						<div><label>Qty</label><input type="text" id="recipe-qty-4" onkeyup="update()"/></div>
+					</td>
+					<td>
+						<div><label>Item</label><input list="ingredients-config" id="recipe-ingredient-5" onkeyup="update()"/></div>
+						<div><label>Item</label><input type="file" id="recipe-img-5" onchange="update()"/></div>
+						<div><label>Qty</label><input type="text" id="recipe-qty-5" onkeyup="update()"/></div>
+					</td>
+					<td>
+						<div><label>Item</label><input list="ingredients-config" id="recipe-ingredient-6" onkeyup="update()"/></div>
+						<div><label>Item</label><input type="file" id="recipe-img-6" onchange="update()"/></div>
+						<div><label>Qty</label><input type="text" id="recipe-qty-6" onkeyup="update()"/></div>
+					</td>
+					<td>
+						<div><label>Item</label><input list="ingredients-config" id="recipe-ingredient-7" onkeyup="update()"/></div>
+						<div><label>Item</label><input type="file" id="recipe-img-7" onchange="update()"/></div>
+						<div><label>Qty</label><input type="text" id="recipe-qty-7" onkeyup="update()"/></div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<div><label>Item</label><input list="ingredients-config" id="recipe-ingredient-8" onkeyup="update()"/></div>
+						<div><label>Item</label><input type="file" id="recipe-img-8" onchange="update()"/></div>
+						<div><label>Qty</label><input type="text" id="recipe-qty-8" onkeyup="update()"/></div>
+					</td>
+					<td>
+						<div><label>Item</label><input list="ingredients-config" id="recipe-ingredient-9" onkeyup="update()"/></div>
+						<div><label>Item</label><input type="file" id="recipe-img-9" onchange="update()"/></div>
+						<div><label>Qty</label><input type="text" id="recipe-qty-9" onkeyup="update()"/></div>
+					</td>
+					<td>
+						<div><label>Item</label><input list="ingredients-config" id="recipe-ingredient-10" onkeyup="update()"/></div>
+						<div><label>Item</label><input type="file" id="recipe-img-10" onchange="update()"/></div>
+						<div><label>Qty</label><input type="text" id="recipe-qty-10" onkeyup="update()"/></div>
+					</td>
+					<td>
+						<div><label>Item</label><input list="ingredients-config" id="recipe-ingredient-11" onkeyup="update()"/></div>
+						<div><label>Item</label><input type="file" id="recipe-img-11" onchange="update()"/></div>
+						<div><label>Qty</label><input type="text" id="recipe-qty-11" onkeyup="update()"/></div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<div><label>Item</label><input list="ingredients-config" id="recipe-ingredient-12" onkeyup="update()"/></div>
+						<div><label>Item</label><input type="file" id="recipe-img-12" onchange="update()"/></div>
+						<div><label>Qty</label><input type="text" id="recipe-qty-12" onkeyup="update()"/></div>
+					</td>
+					<td>
+						<div><label>Item</label><input list="ingredients-config" id="recipe-ingredient-13" onkeyup="update()"/></div>
+						<div><label>Item</label><input type="file" id="recipe-img-13" onchange="update()"/></div>
+						<div><label>Qty</label><input type="text" id="recipe-qty-13" onkeyup="update()"/></div>
+					</td>
+					<td>
+						<div><label>Item</label><input list="ingredients-config" id="recipe-ingredient-14" onkeyup="update()"/></div>
+						<div><label>Item</label><input type="file" id="recipe-img-14" onchange="update()"/></div>
+						<div><label>Qty</label><input type="text" id="recipe-qty-14" onkeyup="update()"/></div>
+					</td>
+					<td>
+						<div><label>Item</label><input list="ingredients-config" id="recipe-ingredient-15" onkeyup="update()"/></div>
+						<div><label>Item</label><input type="file" id="recipe-img-15" onchange="update()"/></div>
+						<div><label>Qty</label><input type="text" id="recipe-qty-15" onkeyup="update()"/></div>
+					</td>
+				</tr>
+			</table>
+		</form>
+	
+		<main>
+			<section id="log">
+				<h1>QUEST LOG</h1>
+				<h2>Make <span class="recipe-name">{name}</span></h2>
+
+				<aside>
+					<p>Prep: <span class="detail"><span class="recipe-prep">{prep}</span></span></p>
+					<p>Cook: <span class="detail"><span class="recipe-cook">{cook}</span></span></p>
+				</aside>
+				
+				<h3>REWARD</h3>
+				<article>
+					<div>
+						<img class="item recipe-img" src=""/>
+					</div>
+					<div>
+						<h1><span class="recipe-name">{name}</span></h1>
+						<h2><span class="recipe-cls">{classification}</span></h2>
+					</div>
+				</article>
+				
+				<aside>					
+					<p class="recipe-desc">{description}</p>
+				</aside>
+				
+				<div id="actions">
+					<div style="position: relative">
+						<button class="option">Accept</button>
+						<button class="option">Decline</button>
+					</div>
+				</div>
+				
+				<button class="close">
+					<img src="ui/close-button.png" />
+				</button>
+			</section>
+			<section id="inventory">
+				<h1>Inventory</h1>
+				<div>
+					<table cellspacing="5px">
+						<tr>
+							<td class="recipe-ingredient-0"></td>
+							<td class="recipe-ingredient-1"></td>
+							<td class="recipe-ingredient-2"></td>
+							<td class="recipe-ingredient-3"></td>
+						</tr>
+						<tr>
+							<td class="recipe-ingredient-4"></td>
+							<td class="recipe-ingredient-5"></td>
+							<td class="recipe-ingredient-6"></td>
+							<td class="recipe-ingredient-7"></td>
+						</tr>
+						<tr>
+							<td class="recipe-ingredient-8"></td>
+							<td class="recipe-ingredient-9"></td>
+							<td class="recipe-ingredient-10"></td>
+							<td class="recipe-ingredient-11"></td>
+						</tr>
+						<tr>
+							<td class="recipe-ingredient-12"></td>
+							<td class="recipe-ingredient-13"></td>
+							<td class="recipe-ingredient-14"></td>
+							<td class="recipe-ingredient-15"></td>
+						</tr>
+					</table>
+				</div>
+				
+				<button class="close">
+					<img src="ui/close-button.png" />
+				</button>
+			</section>
+		</main>
+	</body>
+</html>
