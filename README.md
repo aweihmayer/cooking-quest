@@ -1,1 +1,1 @@
-Download the whole document. And run the template.html file in the browser by opening it.
+Download the whole folder. Run the template.html file in the browser by opening it.
