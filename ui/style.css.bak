@@ -1,0 +1,245 @@
+/************************************************************************
+FORM
+************************************************************************/
+
+form h1 {
+	padding: 0px;
+	margin: 5px 0px 5px 0px;
+	font-size: 15px;
+}
+
+form table td {
+	border: 1px solid black;
+}
+
+form div label {
+	width: 40px;
+	display: inline-block;
+	vertical-align: top;
+}
+
+/************************************************************************
+GENERAL
+************************************************************************/
+
+@font-face {
+	font-family: '8bit';
+	src: url(fonts/slkscr.ttf);
+}
+
+main {
+	width: 1100px;
+	height: 725px;
+	font-family: '8bit';
+	background-image: url(background.jpg);
+	padding: 10px;
+}
+
+main section {
+	position: relative;
+	
+	height: 685px;
+	display: inline-block;
+	vertical-align: top;
+	padding: 10px;
+	
+	border: 10px solid transparent;
+	border-image: url(complete-border.png) 31 stretch;
+	border-radius: 3%
+}
+
+main h1, h2, h3, h4 {
+	margin: 0px 0px 10px 0px;
+	padding: 0px;
+}
+
+main p {
+	margin: 0px 0px 5px 0px;
+}
+
+main img.item {
+	width: 50px;
+	height: 60px;
+}
+
+main img.flavor {
+	width: 25px;
+	height: 30px;
+}
+
+#log aside article {
+	border: 10px solid transparent;
+	border-image: url(item-border.png) 30 stretch;
+}
+
+main span.detail {
+	color: #B48547;
+}
+
+main ul {
+	list-style: none;
+	padding: 0px;
+	margin: 0px;
+}
+
+main button.option {
+	font-family: '8bit';
+	border: 10px solid transparent;
+	border-image: url(button-border.png) 18 stretch;
+	border-radius: 18%;
+	background-color: #DD822E;
+	width: 120px;
+}
+
+main button.close {
+	position: absolute;
+    top: -15px;
+    right: -20px;
+	background: transparent;
+	border: none;
+}
+
+main button.close img {
+	width: 30px;
+	height: 30px;
+}
+
+/************************************************************************
+PANELS
+************************************************************************/
+
+main section > h1 {
+	border-bottom-width: 3px;
+	border-bottom-style: solid;
+	
+	text-align: center;
+	margin-bottom: 10px;
+}
+
+/************************************************************************
+QUEST LOG
+************************************************************************/
+
+#log {
+	color: #B1874C;
+	background-color: #F5CD92;
+	
+	width: 300px;
+	position: relative;
+}
+
+/* HEADINGS */
+
+#log h1 {
+	color: #886A3E;
+}
+
+#log > h1 {
+	border-color: #D6A565;
+	font-size: 50px;
+}
+
+#log > h2 {
+	font-size: 30px;
+	color: #DF832B;
+}
+
+/* REWARD */
+
+#log article {
+	position: relative;
+	color: #FCF9E7;
+	background-color: #77746B;
+	margin-bottom: 10px;
+	padding: 5px;
+}
+
+#log article div:nth-child(2) {
+	position: absolute;
+	top: 5px;
+	left: 5px;
+}
+
+#log article div:nth-child(2) {
+	margin-left: 55px;
+	vertical-align: top;
+	display: inline-block;
+}
+
+#log article h1, #log article h2 {
+	color: #FCF9E7;
+}
+
+#log article h1 {
+	font-size: 20px;
+}
+
+#log article h2 {
+	font-size: 15px;
+}
+
+#log ul.flavors li {
+	display: inline-block;
+	font-size: 10px;
+	text-align: center;
+	margin-right: 5px;
+}
+
+#log #actions {
+	position: absolute;
+	bottom: 0px;
+	left: 0px;
+	
+	width: 300px;
+	height: 35px;
+	padding: 10px;
+}
+
+#log #actions button:nth-child(2) {
+	position: absolute;
+	right: 0px;
+	top: 0px;
+}
+
+/************************************************************************
+INVENTORY
+************************************************************************/
+
+#inventory {
+	width: 700px;
+	color: #FCF9E7;
+	background-color: #555054;
+}
+
+#inventory > h1 {
+	border-color: #767266;
+	font-size: 50px;
+}
+
+#inventory table {
+	color: white;
+	width: 100%;
+}
+
+#inventory table td {
+	border: 1px solid black;
+	width: 15%;
+	height: 150px;
+	text-align: center;
+	background-color: #77746B;
+	
+	border-radius: 9%;
+	border: 10px solid transparent;
+	border-image: url(item-border.png) 13 stretch;
+}
+
+#inventory table td h3 {
+	height: 40px;
+	margin: 0px;
+	padding: 0px;
+}
+
+#inventory table td p {
+	padding: 5px 0px 0px 0px;
+	margin: 0px;
+}
